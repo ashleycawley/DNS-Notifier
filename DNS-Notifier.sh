@@ -43,7 +43,7 @@ do
 	if [ $ARESULT == 0 ] || [ $WWWRESULT == 0 ] || [ $MAILRESULT == 0 ]
 	then
 		USERNAME=(`grep -ri "$DOMAIN" /var/cpanel/userdata/ | grep "main_domain: \|parked_domains\|addon_domains" | head -n 1 | cut -d '/' -f 5`)
-		OWNER=(`grep -ri "owner: " /var/cpanel/userdata/$USERNAME/ | grep -v SSL | awk ' { print $2 } '`)
+		OWNER=(`grep -ri "owner: " /var/cpanel/userdata/$USERNAME/${DOMAIN}_SSL | awk ' { print $2 } '`)
 		echo "$DOMAIN,$USERNAME,$OWNER"
 	fi
 
